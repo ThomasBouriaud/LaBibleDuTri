@@ -1,0 +1,28 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    <h1>Fill the following data to add a record :</h1>
+    <div class="row">
+        <form class="col s12" method="post" action="/new">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="nom" name="nom" type="text" class="validate" required>
+                    <label for="nom">Nom</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="classe" name="classe" type="text" class="validate" required>
+                    <label for="classe">Classe</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="remarque" name="remarque" type="text" class="validate">
+                    <label for="remarque">Remarque</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+{% endblock %}

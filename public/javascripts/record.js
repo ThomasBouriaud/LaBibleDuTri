@@ -8,7 +8,7 @@ class Record {
     }
 
     elementToTR() {
-        let toValidate = this._validated === true ? "" : `<a class="btn-floating waves-effect waves-light green darken-1" onclick="Record.validate(this, ${this._id})"><i class="material-icons">done</i></a>`;
+        let toValidate = this._validated === true ? "" : `<a class="btn-floating waves-effect waves-light green darken-1" onclick="Record.validate($(this), ${this._id})"><i class="material-icons">done</i></a>`;
         let checked = this._validated ? "checked" : "";
         return `<tr class="parent-tr">
             <td>
@@ -44,15 +44,17 @@ class Record {
     }
 
     static switchDisplay(e) {
-        console.log(e);
-        console.log(e.closest(".parent-tr"))
         let parent = e.closest(".parent-tr");
         parent.closest(parent.toggleClass("update-mode"))
     }
 
     static validate(e, id) {
-        console.log(e);
-        e.style.display = 'none';
+        // change validated value
+        let parent = e.closest(".parent-tr");
+        parent.find("td:nth-child(5) span").text("true");
+        parent.find("[name='validated']").prop("checked", true);
+
+        e.css("display", "none");
         console.log(`You asked to validate the id ${id}`);
         $.ajax({
             url: `/admin/${id}`,

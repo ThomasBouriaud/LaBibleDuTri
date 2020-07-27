@@ -17,11 +17,11 @@ router.put('/:id', function (req, res, next) {
         var json = JSON.parse(data);
 
         json.forEach(e => {
-            console.log(e);
+            // console.log(e);
             if (e.id === id) {
                 e.validated = true;
             }
-            console.log(e);
+            // console.log(e);
         })
 
         fs.writeFile(filePath, JSON.stringify(json), err => {
@@ -46,8 +46,7 @@ router.put('/', function (req, res, next) {
 
         json.forEach(e => {
             if (e.id === id) {
-                console.log("THIS IS THE ONE")
-                console.log(e);
+                // console.log(e);
                 e.nom = nom;
                 e.classe = classe;
                 e.remarque = remarque;
